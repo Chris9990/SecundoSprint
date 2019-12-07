@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="Cod_Categoria" />
+    </Key>
+    <Property Name="Cod_Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion_Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SubCategoria" Relationship="Self.FK_SubCategoria_Categorias" FromRole="Categorias" ToRole="SubCategoria" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Cod_Cliente" />
+    </Key>
+    <Property Name="Cod_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono_Cliente" Type="Int32" Nullable="false" />
+    <Property Name="Cod_MPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Metodo_de_Pago" Relationship="Self.FK_Clientes_Metodo_de_PAgo" FromRole="Clientes" ToRole="Metodo_de_Pago" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Clientes" FromRole="Clientes" ToRole="Ventas" />
+    <NavigationProperty Name="Tarjeta_Credito" Relationship="Self.Tarjeta_Cliente" FromRole="Clientes" ToRole="Tarjeta_Credito" />
+  </EntityType>
+  <EntityType Name="Compras">
+    <Key>
+      <PropertyRef Name="Cod_Compra" />
+    </Key>
+    <Property Name="Cod_Compra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Compra" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Proveedores" Relationship="Self.FK_Compras_Proveedores" FromRole="Compras" ToRole="Proveedores" />
+    <NavigationProperty Name="Detalle_de_Compras" Relationship="Self.FK_Detalle_de_Compras_Compras" FromRole="Compras" ToRole="Detalle_de_Compras" />
+  </EntityType>
+  <EntityType Name="Detalle_de_Compras">
+    <Key>
+      <PropertyRef Name="Cod_Compra" />
+    </Key>
+    <Property Name="Cod_Compra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Compra" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Compras" Relationship="Self.FK_Detalle_de_Compras_Compras" FromRole="Detalle_de_Compras" ToRole="Compras" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_Detalle_de_Compras_Productos" FromRole="Detalle_de_Compras" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Entrega">
+    <Key>
+      <PropertyRef Name="Cod_Pedido" />
+    </Key>
+    <Property Name="Cod_Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Entrega" FromRole="Entrega" ToRole="Pedido_de_Venta" />
+  </EntityType>
+  <EntityType Name="Marcas">
+    <Key>
+      <PropertyRef Name="Cod_Marca" />
+    </Key>
+    <Property Name="Cod_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Marcas" FromRole="Marcas" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Metodo_de_Pago">
+    <Key>
+      <PropertyRef Name="Cod_MPago" />
+    </Key>
+    <Property Name="Cod_MPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Metodo_de_PAgo" FromRole="Metodo_de_Pago" ToRole="Clientes" />
+  </EntityType>
+  <EntityType Name="Pedido_de_Venta">
+    <Key>
+      <PropertyRef Name="Cod_Pedido" />
+    </Key>
+    <Property Name="Cod_Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Venta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Cod_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaHora_Pedido" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Entrega" Relationship="Self.FK_Pedido_de_Venta_Entrega" FromRole="Pedido_de_Venta" ToRole="Entrega" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_Pedido_de_Venta_Productos" FromRole="Pedido_de_Venta" ToRole="Productos" />
+    <NavigationProperty Name="Repartidores" Relationship="Self.FK_Pedido_de_Venta_Repartidores" FromRole="Pedido_de_Venta" ToRole="Repartidores" />
+    <NavigationProperty Name="Sucursales" Relationship="Self.FK_Pedido_de_Venta_Sucursales" FromRole="Pedido_de_Venta" ToRole="Sucursales" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK_Pedido_de_Venta_Ventas" FromRole="Pedido_de_Venta" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+    </Key>
+    <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Informacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio_Venta" Type="Int32" Nullable="false" />
+    <Property Name="Oferta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_SubCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URLVideo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Detalle_de_Compras" Relationship="Self.FK_Detalle_de_Compras_Productos" FromRole="Productos" ToRole="Detalle_de_Compras" />
+    <NavigationProperty Name="Marcas" Relationship="Self.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
+    <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Productos" FromRole="Productos" ToRole="Pedido_de_Venta" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.FK_Producto_Sucursal_Productos" FromRole="Productos" ToRole="Producto_Sucursal" />
+    <NavigationProperty Name="SubCategoria" Relationship="Self.FK_Productos_SubCategoria" FromRole="Productos" ToRole="SubCategoria" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="Cod_Prov" />
+    </Key>
+    <Property Name="Cod_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono_Prov" Type="Int32" Nullable="false" />
+    <Property Name="Direccion_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Proveedores" FromRole="Proveedores" ToRole="Compras" />
+  </EntityType>
+  <EntityType Name="Repartidores">
+    <Key>
+      <PropertyRef Name="Cod_Repartidor" />
+    </Key>
+    <Property Name="Cod_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CI" Type="Int32" Nullable="false" />
+    <Property Name="Telefono_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Repartidores" FromRole="Repartidores" ToRole="Pedido_de_Venta" />
+  </EntityType>
+  <EntityType Name="SubCategoria">
+    <Key>
+      <PropertyRef Name="Cod_SubCategoria" />
+    </Key>
+    <Property Name="Cod_SubCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre_SubCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion_SubCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="Self.FK_SubCategoria_Categorias" FromRole="SubCategoria" ToRole="Categorias" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_SubCategoria" FromRole="SubCategoria" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Sucursales">
+    <Key>
+      <PropertyRef Name="Cod_Sucursal" />
+    </Key>
+    <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono_Sucursal" Type="Int32" Nullable="false" />
+    <Property Name="Latitud" Type="Double" Nullable="false" />
+    <Property Name="Longitud" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Sucursales" FromRole="Sucursales" ToRole="Pedido_de_Venta" />
+    <NavigationProperty Name="Producto_Sucursal" Relationship="Self.FK_Producto_Sucursal_Sucursales" FromRole="Sucursales" ToRole="Producto_Sucursal" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tarjeta_Credito">
+    <Key>
+      <PropertyRef Name="Numero_Tarjeta" />
+    </Key>
+    <Property Name="Numero_Tarjeta" Type="Int32" Nullable="false" />
+    <Property Name="CVC" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Caducidad" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Clientes" Relationship="Self.Tarjeta_Cliente" FromRole="Tarjeta_Credito" ToRole="Clientes" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="Cod_Venta" />
+    </Key>
+    <Property Name="Cod_Venta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha_Venta" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK_Ventas_Clientes" FromRole="Ventas" ToRole="Clientes" />
+    <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Ventas" FromRole="Ventas" ToRole="Pedido_de_Venta" />
+  </EntityType>
+  <EntityType Name="Producto_Sucursal">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+      <PropertyRef Name="Cod_Sucursal" />
+      <PropertyRef Name="Stock" />
+      <PropertyRef Name="Stock_minimo" />
+    </Key>
+    <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="Stock_minimo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_Producto_Sucursal_Productos" FromRole="Producto_Sucursal" ToRole="Productos" />
+    <NavigationProperty Name="Sucursales" Relationship="Self.FK_Producto_Sucursal_Sucursales" FromRole="Producto_Sucursal" ToRole="Sucursales" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategoria_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="Cod_Categoria" />
+      </Principal>
+      <Dependent Role="SubCategoria">
+        <PropertyRef Name="Cod_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Metodo_de_PAgo">
+    <End Role="Metodo_de_Pago" Type="Self.Metodo_de_Pago" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metodo_de_Pago">
+        <PropertyRef Name="Cod_MPago" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="Cod_MPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ventas_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="Cod_Cliente" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="Cod_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Compras_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="Cod_Prov" />
+      </Principal>
+      <Dependent Role="Compras">
+        <PropertyRef Name="Cod_Prov" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_de_Compras_Compras">
+    <End Role="Compras" Type="Self.Compras" Multiplicity="1" />
+    <End Role="Detalle_de_Compras" Type="Self.Detalle_de_Compras" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Compras">
+        <PropertyRef Name="Cod_Compra" />
+      </Principal>
+      <Dependent Role="Detalle_de_Compras">
+        <PropertyRef Name="Cod_Compra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_de_Compras_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="Detalle_de_Compras" Type="Self.Detalle_de_Compras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Detalle_de_Compras">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_de_Venta_Entrega">
+    <End Role="Entrega" Type="Self.Entrega" Multiplicity="1" />
+    <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Entrega">
+        <PropertyRef Name="Cod_Pedido" />
+      </Principal>
+      <Dependent Role="Pedido_de_Venta">
+        <PropertyRef Name="Cod_Pedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Marcas">
+    <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marcas">
+        <PropertyRef Name="Cod_Marca" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="Cod_Marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_de_Venta_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Pedido_de_Venta">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_de_Venta_Repartidores">
+    <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
+    <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Repartidores">
+        <PropertyRef Name="Cod_Repartidor" />
+      </Principal>
+      <Dependent Role="Pedido_de_Venta">
+        <PropertyRef Name="Cod_Repartidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_de_Venta_Sucursales">
+    <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
+    <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursales">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Pedido_de_Venta">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedido_de_Venta_Ventas">
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="1" />
+    <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="Cod_Venta" />
+      </Principal>
+      <Dependent Role="Pedido_de_Venta">
+        <PropertyRef Name="Cod_Venta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Sucursal_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Producto_Sucursal">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_SubCategoria">
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategoria">
+        <PropertyRef Name="Cod_SubCategoria" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="Cod_SubCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Sucursal_Sucursales">
+    <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
+    <End Role="Producto_Sucursal" Type="Self.Producto_Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursales">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Producto_Sucursal">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <Association Name="Tarjeta_Cliente">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Tarjeta_Credito" Type="Self.Tarjeta_Credito" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="Compras" EntityType="Self.Compras" />
+    <EntitySet Name="Detalle_de_Compras" EntityType="Self.Detalle_de_Compras" />
+    <EntitySet Name="Entrega" EntityType="Self.Entrega" />
+    <EntitySet Name="Marcas" EntityType="Self.Marcas" />
+    <EntitySet Name="Metodo_de_Pago" EntityType="Self.Metodo_de_Pago" />
+    <EntitySet Name="Pedido_de_Venta" EntityType="Self.Pedido_de_Venta" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+    <EntitySet Name="Repartidores" EntityType="Self.Repartidores" />
+    <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" />
+    <EntitySet Name="Sucursales" EntityType="Self.Sucursales" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+    <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategoria_Categorias" Association="Self.FK_SubCategoria_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Metodo_de_PAgo" Association="Self.FK_Clientes_Metodo_de_PAgo">
+      <End Role="Metodo_de_Pago" EntitySet="Metodo_de_Pago" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ventas_Clientes" Association="Self.FK_Ventas_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Compras_Proveedores" Association="Self.FK_Compras_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Compras" EntitySet="Compras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_de_Compras_Compras" Association="Self.FK_Detalle_de_Compras_Compras">
+      <End Role="Compras" EntitySet="Compras" />
+      <End Role="Detalle_de_Compras" EntitySet="Detalle_de_Compras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_de_Compras_Productos" Association="Self.FK_Detalle_de_Compras_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Detalle_de_Compras" EntitySet="Detalle_de_Compras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_de_Venta_Entrega" Association="Self.FK_Pedido_de_Venta_Entrega">
+      <End Role="Entrega" EntitySet="Entrega" />
+      <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
+      <End Role="Marcas" EntitySet="Marcas" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_de_Venta_Productos" Association="Self.FK_Pedido_de_Venta_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_de_Venta_Repartidores" Association="Self.FK_Pedido_de_Venta_Repartidores">
+      <End Role="Repartidores" EntitySet="Repartidores" />
+      <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_de_Venta_Sucursales" Association="Self.FK_Pedido_de_Venta_Sucursales">
+      <End Role="Sucursales" EntitySet="Sucursales" />
+      <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedido_de_Venta_Ventas" Association="Self.FK_Pedido_de_Venta_Ventas">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Sucursal_Productos" Association="Self.FK_Producto_Sucursal_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_SubCategoria" Association="Self.FK_Productos_SubCategoria">
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Sucursal_Sucursales" Association="Self.FK_Producto_Sucursal_Sucursales">
+      <End Role="Sucursales" EntitySet="Sucursales" />
+      <End Role="Producto_Sucursal" EntitySet="Producto_Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="Tarjeta_Cliente" Association="Self.Tarjeta_Cliente">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

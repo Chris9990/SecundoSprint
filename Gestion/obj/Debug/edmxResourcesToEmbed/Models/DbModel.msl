@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GestionModelStoreContainer" CdmEntityContainer="DbModels">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="GestionModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="GestionModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="GestionModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="GestionModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="GestionModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="GestionModel.Categorias">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+          <ScalarProperty Name="Nombre_Categoria" ColumnName="Nombre_Categoria" />
+          <ScalarProperty Name="Descripcion_Categoria" ColumnName="Descripcion_Categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="GestionModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
+          <ScalarProperty Name="Direccion_Cliente" ColumnName="Direccion_Cliente" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono_Cliente" ColumnName="Telefono_Cliente" />
+          <ScalarProperty Name="Cod_MPago" ColumnName="Cod_MPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compras">
+      <EntityTypeMapping TypeName="GestionModel.Compras">
+        <MappingFragment StoreEntitySet="Compras">
+          <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
+          <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
+          <ScalarProperty Name="Fecha_Compra" ColumnName="Fecha_Compra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_de_Compras">
+      <EntityTypeMapping TypeName="GestionModel.Detalle_de_Compras">
+        <MappingFragment StoreEntitySet="Detalle de Compras">
+          <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
+          <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
+          <ScalarProperty Name="Fecha_Compra" ColumnName="Fecha_Compra" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrega">
+      <EntityTypeMapping TypeName="GestionModel.Entrega">
+        <MappingFragment StoreEntitySet="Entrega">
+          <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
+          <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marcas">
+      <EntityTypeMapping TypeName="GestionModel.Marcas">
+        <MappingFragment StoreEntitySet="Marcas">
+          <ScalarProperty Name="Cod_Marca" ColumnName="Cod_Marca" />
+          <ScalarProperty Name="Nombre_Marca" ColumnName="Nombre_Marca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metodo_de_Pago">
+      <EntityTypeMapping TypeName="GestionModel.Metodo_de_Pago">
+        <MappingFragment StoreEntitySet="Metodo de Pago">
+          <ScalarProperty Name="Cod_MPago" ColumnName="Cod_MPago" />
+          <ScalarProperty Name="Metodo" ColumnName="Metodo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pedido_de_Venta">
+      <EntityTypeMapping TypeName="GestionModel.Pedido_de_Venta">
+        <MappingFragment StoreEntitySet="Pedido de Venta">
+          <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+          <ScalarProperty Name="FechaHora_Pedido" ColumnName="FechaHora_Pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="GestionModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Nombre_Producto" ColumnName="Nombre_Producto" />
+          <ScalarProperty Name="Cod_Marca" ColumnName="Cod_Marca" />
+          <ScalarProperty Name="Informacion" ColumnName="Informacion" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Oferta" ColumnName="Oferta" />
+          <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+          <ScalarProperty Name="URLVideo" ColumnName="URLVideo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="GestionModel.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Nombre_Prov" ColumnName="Nombre_Prov" />
+          <ScalarProperty Name="Apellido_Prov" ColumnName="Apellido_Prov" />
+          <ScalarProperty Name="Telefono_Prov" ColumnName="Telefono_Prov" />
+          <ScalarProperty Name="Direccion_Prov" ColumnName="Direccion_Prov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repartidores">
+      <EntityTypeMapping TypeName="GestionModel.Repartidores">
+        <MappingFragment StoreEntitySet="Repartidores">
+          <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+          <ScalarProperty Name="CI" ColumnName="CI" />
+          <ScalarProperty Name="Telefono_Repartidor" ColumnName="Telefono_Repartidor" />
+          <ScalarProperty Name="Nombre_Repartidor" ColumnName="Nombre_Repartidor" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategoria">
+      <EntityTypeMapping TypeName="GestionModel.SubCategoria">
+        <MappingFragment StoreEntitySet="SubCategoria">
+          <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+          <ScalarProperty Name="Nombre_SubCategoria" ColumnName="Nombre_SubCategoria" />
+          <ScalarProperty Name="Descripcion_SubCategoria" ColumnName="Descripcion_SubCategoria" />
+          <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursales">
+      <EntityTypeMapping TypeName="GestionModel.Sucursales">
+        <MappingFragment StoreEntitySet="Sucursales">
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Direccion_Sucursal" ColumnName="Direccion_Sucursal" />
+          <ScalarProperty Name="Telefono_Sucursal" ColumnName="Telefono_Sucursal" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GestionModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarjeta_Credito">
+      <EntityTypeMapping TypeName="GestionModel.Tarjeta_Credito">
+        <MappingFragment StoreEntitySet="Tarjeta_Credito">
+          <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+          <ScalarProperty Name="CVC" ColumnName="CVC" />
+          <ScalarProperty Name="Fecha_Caducidad" ColumnName="Fecha_Caducidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="GestionModel.Ventas">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+          <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+          <ScalarProperty Name="Fecha_Venta" ColumnName="Fecha_Venta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto_Sucursal">
+      <EntityTypeMapping TypeName="GestionModel.Producto_Sucursal">
+        <MappingFragment StoreEntitySet="Producto_Sucursal">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Stock_minimo" ColumnName="Stock_minimo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="GestionModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Tarjeta_Cliente" TypeName="GestionModel.Tarjeta_Cliente" StoreEntitySet="Tarjeta Cliente">
+      <EndProperty Name="Clientes">
+        <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+      </EndProperty>
+      <EndProperty Name="Tarjeta_Credito">
+        <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
