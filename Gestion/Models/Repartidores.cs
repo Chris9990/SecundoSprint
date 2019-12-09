@@ -11,8 +11,7 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Repartidores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,20 +19,11 @@ namespace Gestion.Models
         {
             this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
         }
-        [Required]
-        [Display(Name = "Código Repartidor:")]
+    
         public string Cod_Repartidor { get; set; }
-        [Required]
-        [Display(Name = "CI:")]
         public int CI { get; set; }
-        [Required]
-        [Display(Name = "Teléfono:")]
         public string Telefono_Repartidor { get; set; }
-        [Required]
-        [Display(Name = "Nombre:")]
         public string Nombre_Repartidor { get; set; }
-        [Required]
-        [Display(Name = "Placa:")]
         public string Placa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

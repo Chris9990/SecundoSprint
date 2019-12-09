@@ -12,18 +12,14 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Marcas
+    public partial class Pedido_de_VentaAPI
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Marcas()
-        {
-            this.Productos = new HashSet<Productos>();
-        }
-    
-        public string Cod_Marca { get; set; }
-        public string Nombre_Marca { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Productos> Productos { get; set; }
+        public string Cod_Pedido { get; set; }
+        public string Cod_Producto { get; set; }
+        public string Cod_Sucursal { get; set; }
+        public string Cod_Venta { get; set; }
+        public int Cantidad { get; set; }
+        public string Cod_Repartidor { get; set; }
+        public System.DateTime FechaHora_Pedido { get; set; }
     }
 }

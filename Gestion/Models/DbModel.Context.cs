@@ -47,5 +47,6 @@ namespace Gestion.Models
         public virtual DbSet<Tarjeta_Credito> Tarjeta_Credito { get; set; }
         public virtual DbSet<Ventas> Ventas { get; set; }
         public virtual DbSet<Producto_Sucursal> Producto_Sucursal { get; set; }
+        public virtual DbSet<Pedido_de_VentaAPI> Pedido_de_VentaAPI { get; set; }
     }
 }

@@ -1,53 +1,53 @@
-﻿using System;
+﻿using Gestion.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Gestion.Models;
 
 namespace Gestion.Controllers
 {
-    public class ClientesController : Controller
+    public class Detalle_de_ComprasController : Controller
     {
-        // GET: Clientes
+        // GET: Detalle_de_Compras
         public ActionResult Index()
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Clientes.ToList());
+                return View(dbModel.Detalle_de_Compras.ToList());
             }
         }
 
-        // GET: Clientes/Details/5
+        // GET: Detalle_de_Compras/Details/5
         public ActionResult Details(string id)
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return View(dbModel.Detalle_de_Compras.Where(x => x.Cod_Compra == id).FirstOrDefault());
             }
         }
 
-        // GET: Clientes/Create
+        // GET: Detalle_de_Compras/Create
         public ActionResult Create()
         {
             using (DbModels dbModel = new DbModels())
             {
-                ViewBag.Cod_MPago = new SelectList(dbModel.Metodo_de_Pago, "Cod_MPago", "Metodo").ToList();
+                ViewBag.Cod_Producto = new SelectList(dbModel.Productos, "Cod_Producto", "Nombre_Producto").ToList();
 
                 return View();
             }
         }
 
-        // POST: Clientes/Create
+        // POST: Detalle_de_Compras/Create
         [HttpPost]
-        public ActionResult Create(Clientes cliente)
+        public ActionResult Create(Detalle_de_Compras detalle)
         {
             try
             {
                 using (DbModels dbModels = new DbModels())
                 {
-                    dbModels.Clientes.Add(cliente);
+                    dbModels.Detalle_de_Compras.Add(detalle);
                     dbModels.SaveChanges();
 
                 }
@@ -60,24 +60,24 @@ namespace Gestion.Controllers
             }
         }
 
-        // GET: Clientes/Edit/5
+        // GET: Detalle_de_Compras/Edit/5
         public ActionResult Edit(string id)
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return View(dbModel.Detalle_de_Compras.Where(x => x.Cod_Compra == id).FirstOrDefault());
             }
         }
 
-        // POST: Clientes/Edit/5
+        // POST: Detalle_de_Compras/Edit/5
         [HttpPost]
-        public ActionResult Edit(string id, Clientes cliente)
+        public ActionResult Edit(string id, Detalle_de_Compras detalle)
         {
             try
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    dbModel.Entry(cliente).State = EntityState.Modified;
+                    dbModel.Entry(detalle).State = EntityState.Modified;
                     dbModel.SaveChanges();
                 }
 
@@ -89,16 +89,16 @@ namespace Gestion.Controllers
             }
         }
 
-        // GET: Clientes/Delete/5
+        // GET: Detalle_de_Compras/Delete/5
         public ActionResult Delete(string id)
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return View(dbModel.Detalle_de_Compras.Where(x => x.Cod_Compra == id).FirstOrDefault());
             }
         }
 
-        // POST: Clientes/Delete/5
+        // POST: Detalle_de_Compras/Delete/5
         [HttpPost]
         public ActionResult Delete(string id, FormCollection collection)
         {
@@ -106,8 +106,8 @@ namespace Gestion.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    Clientes cliente = dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault();
-                    dbModel.Clientes.Remove(cliente);
+                    Detalle_de_Compras detalle = dbModel.Detalle_de_Compras.Where(x => x.Cod_Compra == id).FirstOrDefault();
+                    dbModel.Detalle_de_Compras.Remove(detalle);
                     dbModel.SaveChanges();
                 }
 

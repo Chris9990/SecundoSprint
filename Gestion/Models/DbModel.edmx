@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -99,9 +99,8 @@
             <PropertyRef Name="Cod_Compra" />
           </Key>
           <Property Name="Cod_Compra" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Prov" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Fecha_Compra" Type="datetime" Nullable="false" />
           <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
         </EntityType>
         <EntityType Name="Entrega">
           <Key>
@@ -128,6 +127,26 @@
         <EntityType Name="Pedido de Venta">
           <Key>
             <PropertyRef Name="Cod_Pedido" />
+          </Key>
+          <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Sucursal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Venta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaHora_Pedido" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Pedido de VentaAPI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Pedido de VentaAPI">
+          <Key>
+            <PropertyRef Name="Cod_Pedido" />
+            <PropertyRef Name="Cod_Producto" />
+            <PropertyRef Name="Cod_Sucursal" />
+            <PropertyRef Name="Cod_Venta" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="FechaHora_Pedido" />
           </Key>
           <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
@@ -521,6 +540,17 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySet Name="Tarjeta Cliente" EntityType="Self.Tarjeta Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido de VentaAPI" EntityType="Self.Pedido de VentaAPI" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Pedido de VentaAPI].[Cod_Pedido] AS [Cod_Pedido], 
+    [Pedido de VentaAPI].[Cod_Producto] AS [Cod_Producto], 
+    [Pedido de VentaAPI].[Cod_Sucursal] AS [Cod_Sucursal], 
+    [Pedido de VentaAPI].[Cod_Venta] AS [Cod_Venta], 
+    [Pedido de VentaAPI].[Cantidad] AS [Cantidad], 
+    [Pedido de VentaAPI].[Cod_Repartidor] AS [Cod_Repartidor], 
+    [Pedido de VentaAPI].[FechaHora_Pedido] AS [FechaHora_Pedido]
+    FROM [dbo].[Pedido de VentaAPI] AS [Pedido de VentaAPI]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Producto_Sucursal].[Cod_Producto] AS [Cod_Producto], 
@@ -614,8 +644,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Ventas" EntitySet="Ventas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -717,11 +746,10 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <PropertyRef Name="Cod_Compra" />
           </Key>
           <Property Name="Cod_Compra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cod_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Fecha_Compra" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Compras" Relationship="Self.FK_Detalle_de_Compras_Compras" FromRole="Detalle_de_Compras" ToRole="Compras" />
           <NavigationProperty Name="Productos" Relationship="Self.FK_Detalle_de_Compras_Productos" FromRole="Detalle_de_Compras" ToRole="Productos" />
+          <Property Name="Cantidad" Type="Int32" />
         </EntityType>
         <EntityType Name="Entrega">
           <Key>
@@ -1187,7 +1215,26 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
           </AssociationSet>
+          <EntitySet Name="Pedido_de_VentaAPI" EntityType="GestionModel.Pedido_de_VentaAPI" />
         </EntityContainer>
+        <EntityType Name="Pedido_de_VentaAPI">
+          <Key>
+            <PropertyRef Name="Cod_Pedido" />
+            <PropertyRef Name="Cod_Producto" />
+            <PropertyRef Name="Cod_Sucursal" />
+            <PropertyRef Name="Cod_Venta" />
+            <PropertyRef Name="Cantidad" />
+            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="FechaHora_Pedido" />
+          </Key>
+          <Property Name="Cod_Pedido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Sucursal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cod_Venta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Repartidor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaHora_Pedido" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1283,9 +1330,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySetMapping Name="Detalle_de_Compras">
             <EntityTypeMapping TypeName="GestionModel.Detalle_de_Compras">
               <MappingFragment StoreEntitySet="Detalle de Compras">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
-                <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
-                <ScalarProperty Name="Fecha_Compra" ColumnName="Fecha_Compra" />
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1441,6 +1487,19 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
               <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Pedido_de_VentaAPI">
+            <EntityTypeMapping TypeName="GestionModel.Pedido_de_VentaAPI">
+              <MappingFragment StoreEntitySet="Pedido de VentaAPI">
+                <ScalarProperty Name="FechaHora_Pedido" ColumnName="FechaHora_Pedido" />
+                <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+                <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+                <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+                <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

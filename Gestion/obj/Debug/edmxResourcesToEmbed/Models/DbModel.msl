@@ -90,9 +90,8 @@
     <EntitySetMapping Name="Detalle_de_Compras">
       <EntityTypeMapping TypeName="GestionModel.Detalle_de_Compras">
         <MappingFragment StoreEntitySet="Detalle de Compras">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
-          <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
-          <ScalarProperty Name="Fecha_Compra" ColumnName="Fecha_Compra" />
           <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -248,5 +247,18 @@
         <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Pedido_de_VentaAPI">
+      <EntityTypeMapping TypeName="GestionModel.Pedido_de_VentaAPI">
+        <MappingFragment StoreEntitySet="Pedido de VentaAPI">
+          <ScalarProperty Name="FechaHora_Pedido" ColumnName="FechaHora_Pedido" />
+          <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

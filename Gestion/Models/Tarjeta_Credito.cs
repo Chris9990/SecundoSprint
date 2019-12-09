@@ -11,21 +11,13 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Tarjeta_Credito
     {
-        [Required]
-        [Display(Name = "Número de Tarjeta:")]
         public int Numero_Tarjeta { get; set; }
-        [Required]
-        [Display(Name = "CVC:")]
         public int CVC { get; set; }
-        [Required]
-        [Display(Name = "Fecha Caducidad:")]
         public System.DateTime Fecha_Caducidad { get; set; }
-        
-
+    
         public virtual Clientes Clientes { get; set; }
     }
 }

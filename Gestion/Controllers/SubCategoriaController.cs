@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Gestion.Models;
 
+
 namespace Gestion.Controllers
 {
     public class SubCategoriaController : Controller
@@ -16,6 +17,7 @@ namespace Gestion.Controllers
             using (DbModels dbModel = new DbModels())
             {
                 return View(dbModel.SubCategoria.ToList());
+               
             }
         }
 
@@ -31,7 +33,13 @@ namespace Gestion.Controllers
         // GET: SubCategoria/Create
         public ActionResult Create()
         {
-            return View();
+            using (DbModels dbModel = new DbModels())
+            {
+                ViewBag.Cod_Categoria = new SelectList(dbModel.Categorias, "Cod_Categoria", "Nombre_Categoria").ToList();
+
+                return View();
+            }
+                
         }
 
         // POST: SubCategoria/Create

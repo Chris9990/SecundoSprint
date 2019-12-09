@@ -19,9 +19,6 @@
         <th>
             Descripción
         </th>
-        <th>
-            Codigo de Categoria
-        </th>
         <th></th>
     </tr>
 
@@ -35,9 +32,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Descripcion_SubCategoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cod_Categoria)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.Cod_SubCategoria  }) |

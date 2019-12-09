@@ -94,9 +94,8 @@
       <PropertyRef Name="Cod_Compra" />
     </Key>
     <Property Name="Cod_Compra" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Cod_Prov" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Fecha_Compra" Type="datetime" Nullable="false" />
     <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad" Type="int" />
   </EntityType>
   <EntityType Name="Entrega">
     <Key>
@@ -123,6 +122,26 @@
   <EntityType Name="Pedido de Venta">
     <Key>
       <PropertyRef Name="Cod_Pedido" />
+    </Key>
+    <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cod_Sucursal" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cod_Venta" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaHora_Pedido" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Pedido de VentaAPI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Pedido de VentaAPI">
+    <Key>
+      <PropertyRef Name="Cod_Pedido" />
+      <PropertyRef Name="Cod_Producto" />
+      <PropertyRef Name="Cod_Sucursal" />
+      <PropertyRef Name="Cod_Venta" />
+      <PropertyRef Name="Cantidad" />
+      <PropertyRef Name="Cod_Repartidor" />
+      <PropertyRef Name="FechaHora_Pedido" />
     </Key>
     <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
@@ -516,6 +535,17 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
     <EntitySet Name="Tarjeta Cliente" EntityType="Self.Tarjeta Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pedido de VentaAPI" EntityType="Self.Pedido de VentaAPI" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Pedido de VentaAPI].[Cod_Pedido] AS [Cod_Pedido], 
+    [Pedido de VentaAPI].[Cod_Producto] AS [Cod_Producto], 
+    [Pedido de VentaAPI].[Cod_Sucursal] AS [Cod_Sucursal], 
+    [Pedido de VentaAPI].[Cod_Venta] AS [Cod_Venta], 
+    [Pedido de VentaAPI].[Cantidad] AS [Cantidad], 
+    [Pedido de VentaAPI].[Cod_Repartidor] AS [Cod_Repartidor], 
+    [Pedido de VentaAPI].[FechaHora_Pedido] AS [FechaHora_Pedido]
+    FROM [dbo].[Pedido de VentaAPI] AS [Pedido de VentaAPI]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Producto_Sucursal].[Cod_Producto] AS [Cod_Producto], 

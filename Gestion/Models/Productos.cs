@@ -11,41 +11,27 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     public partial class Productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Productos()
         {
-            this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
-            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+               this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
+             this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
             this.Producto_Sucursal = new HashSet<Producto_Sucursal>();
         }
-        [Required]
-        [Display (Name = "Codigo del Producto")]
+
         public string Cod_Producto { get; set; }
-        [Required]
-        [Display(Name = "Nombre")]
         public string Nombre_Producto { get; set; }
-        [Required]
-        [Display(Name = "Codigo de Marca")]
         public string Cod_Marca { get; set; }
-        [Required]
-        [Display(Name = "Información")]
         public string Informacion { get; set; }
-        [Required]
-        [Display(Name = "Precio de Venta")]
         public int Precio_Venta { get; set; }
-        [Required]
-        [Display(Name = "Oferta")]
         public string Oferta { get; set; }
-        [Required]
-        [Display(Name = "Codigo de SubCategoria")]
         public string Cod_SubCategoria { get; set; }
-        [Required]
-        [Display(Name = "URL")]
         public string URLVideo { get; set; }
+    
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_de_Compras> Detalle_de_Compras { get; set; }
@@ -55,8 +41,5 @@ namespace Gestion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Sucursal> Producto_Sucursal { get; set; }
         public virtual SubCategoria SubCategoria { get; set; }
-        public virtual ICollection<Marcas> Marca { get; set; }
-
-
     }
 }

@@ -187,17 +187,26 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ComprasController.cs" />
+    <Compile Include="Controllers\Detalle_de_ComprasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Marcas1Controller.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\Metodo_de_PagoController.cs" />
+    <Compile Include="Controllers\Pedido_de_Venta1Controller.cs" />
+    <Compile Include="Controllers\Pedido_de_VentaController.cs" />
+    <Compile Include="Controllers\Productos1Controller.cs" />
+    <Compile Include="Controllers\ProductosAPIController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RepartidoresController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SubCategoriaController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Controllers\Tarjeta_CreditoController.cs" />
+    <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,6 +265,9 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pedido_de_Venta.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pedido_de_VentaAPI.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Productos.cs">
@@ -413,10 +425,15 @@
     <Content Include="Views\Tarjeta_Credito\Delete.cshtml" />
     <Content Include="Views\Menu\MenuAdmin.cshtml" />
     <Content Include="Views\Shared\_MenuLayout.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Compras\Index.cshtml" />
+    <Content Include="Views\Detalle_de_Compras\Index.cshtml" />
+    <Content Include="Views\Detalle_de_Compras\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Repartidor\" />
+    <Folder Include="Views\Ventas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -452,7 +469,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50152</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44371/</IISUrl>
+          <IISUrl>https://localhost:80/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

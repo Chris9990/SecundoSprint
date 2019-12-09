@@ -32,18 +32,14 @@ namespace Gestion.Controllers
         // GET: Productos/Create
         public ActionResult Create()
         {
-            //using (DbModels dbModel = new DbModels())
-            //{
-              //  ViewBag.Marcas = new SelectList(dbModel.Marcas, "Cod_Marca", "Nombre_Marca");
-            //}
-            //using (DbModels dbModel = new DbModels())
-            //{
-            //    List<Marcas> lst =
-            //    {
-            //        from d in 
-            //    }
-            //}
+            using (DbModels dbModel = new DbModels())
+            {
+                ViewBag.Cod_Marca = new SelectList(dbModel.Marcas, "Cod_Marca", "Nombre_Marca").ToList();
+                ViewBag.Cod_SubCategoria = new SelectList(dbModel.SubCategoria, "Cod_SubCategoria", "Nombre_SubCategoria").ToList();
+
                 return View();
+            }
+            
         }
 
         // POST: Productos/Create

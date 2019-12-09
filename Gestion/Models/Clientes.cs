@@ -11,8 +11,7 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,26 +20,13 @@ namespace Gestion.Models
             this.Ventas = new HashSet<Ventas>();
             this.Tarjeta_Credito = new HashSet<Tarjeta_Credito>();
         }
-        [Required]
-        [Display(Name = "Código Cliente:")]
+    
         public string Cod_Cliente { get; set; }
-        [Required]
-        [Display(Name = "Nombre:")]
         public string Nombre_Cliente { get; set; }
-        [Required]
-        [Display(Name = "Apellido:")]
         public string Apellido_Cliente { get; set; }
-        [Required]
-        [Display(Name = "Dirección:")]
         public string Direccion_Cliente { get; set; }
-        [Required]
-        [Display(Name = "Correo:")]
         public string Correo { get; set; }
-        [Required]
-        [Display(Name = "Teléfono:")]
         public int Telefono_Cliente { get; set; }
-        [Required]
-        [Display(Name = "Código MetodoPago:")]
         public string Cod_MPago { get; set; }
     
         public virtual Metodo_de_Pago Metodo_de_Pago { get; set; }

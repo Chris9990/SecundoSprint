@@ -46,6 +46,7 @@
         <AssociationConnector Association="GestionModel.FK_Producto_Sucursal_Sucursales" ManuallyRouted="false" />
         <AssociationConnector Association="GestionModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="GestionModel.Tarjeta_Cliente" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GestionModel.Pedido_de_VentaAPI" Width="1.5" PointX="2.625" PointY="12" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
